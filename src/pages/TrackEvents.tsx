@@ -9,7 +9,7 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 // components
 import Page from '../components/Page';
-import { Box, Button, Card, Container, Stack, TextField, Typography } from '@mui/material';
+import { Button, Card, Container, Stack, TextField, Typography } from '@mui/material';
 import Iconify from 'src/components/Iconify';
 import { useState } from 'react';
 
@@ -53,36 +53,78 @@ export default function TrackEventsPage() {
           <Card sx={{ p: 3, mt: 3 }}>
             <Timeline>
               <TimelineItem>
-                <TimelineOppositeContent color="text.secondary">09:30 am</TimelineOppositeContent>
+                <TimelineOppositeContent color="text.secondary">
+                  <Typography variant="body2">
+                    Sep 23, 2020
+                    <br />
+                  </Typography>
+                  <Typography variant="caption">2:09 PM</Typography>
+                </TimelineOppositeContent>
                 <TimelineSeparator>
                   <TimelineDot color="success" />
                   <TimelineConnector />
                 </TimelineSeparator>
-                <TimelineContent>Eat</TimelineContent>
+                <TimelineContent color="text.secondary">
+                  <Typography variant="body2">
+                    SHIPPED
+                    <br />
+                  </Typography>
+                  <Typography variant="caption">
+                    FL, DORAL,
+                    <br />
+                  </Typography>
+                  <Typography variant="caption">UNITED STATES</Typography>
+                </TimelineContent>
               </TimelineItem>
+
               <TimelineItem>
-                <TimelineOppositeContent color="text.secondary">10:00 am</TimelineOppositeContent>
+                <TimelineOppositeContent color="text.secondary">
+                  <Typography variant="body2">
+                    Sep 23, 2020
+                    <br />
+                  </Typography>
+                  <Typography variant="caption">2:09 PM</Typography>
+                </TimelineOppositeContent>
                 <TimelineSeparator>
-                  <TimelineDot />
+                  <TimelineDot color="success" />
                   <TimelineConnector />
                 </TimelineSeparator>
-                <TimelineContent>Code</TimelineContent>
+                <TimelineContent color="text.secondary">
+                  <Typography variant="body2">
+                    SHIPPED
+                    <br />
+                  </Typography>
+                  <Typography variant="caption">
+                    FL, DORAL,
+                    <br />
+                  </Typography>
+                  <Typography variant="caption">UNITED STATES</Typography>
+                </TimelineContent>
               </TimelineItem>
+
               <TimelineItem>
-                <TimelineOppositeContent color="text.secondary">12:00 am</TimelineOppositeContent>
+                <TimelineOppositeContent color="text.secondary">
+                  <Typography variant="body2">
+                    Sep 23, 2020
+                    <br />
+                  </Typography>
+                  <Typography variant="caption">2:09 PM</Typography>
+                </TimelineOppositeContent>
                 <TimelineSeparator>
-                  <TimelineDot />
+                  <TimelineDot color="success" />
                   <TimelineConnector />
                 </TimelineSeparator>
-                <TimelineContent>Sleep</TimelineContent>
-              </TimelineItem>
-              <TimelineItem>
-                <TimelineOppositeContent color="text.secondary">9:00 am</TimelineOppositeContent>
-                <TimelineSeparator>
-                  <TimelineDot />
-                  <TimelineConnector />
-                </TimelineSeparator>
-                <TimelineContent>Repeat</TimelineContent>
+                <TimelineContent color="text.secondary">
+                  <Typography variant="body2">
+                    SHIPPED
+                    <br />
+                  </Typography>
+                  <Typography variant="caption">
+                    FL, DORAL,
+                    <br />
+                  </Typography>
+                  <Typography variant="caption">UNITED STATES</Typography>
+                </TimelineContent>
               </TimelineItem>
             </Timeline>
           </Card>
