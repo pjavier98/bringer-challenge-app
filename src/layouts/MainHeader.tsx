@@ -1,6 +1,5 @@
 // @mui
-import { Box, AppBar, Toolbar, Container, Stack, Button } from '@mui/material';
-import { ThemeContext } from '@emotion/react';
+import { AppBar, Stack, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export default function MainHeader() {
@@ -14,7 +13,7 @@ export default function MainHeader() {
     >
       <Stack direction={'row'} spacing={2} justifyContent={'space-evenly'}>
         <Button component={Link} to="/generate-jwt" variant="contained">
-          Generate Token
+          Generate JWT
         </Button>
         <Button component={Link} to="/track-events" variant="contained">
           Track Events
