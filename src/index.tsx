@@ -16,10 +16,10 @@ import App from './App';
 // ----------------------------------------------------------------------
 
 ReactDOM.render(
-    <HelmetProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-    </HelmetProvider>,
+  <HelmetProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </HelmetProvider>,
   document.getElementById('root')
 );

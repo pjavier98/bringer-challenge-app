@@ -13,7 +13,7 @@ export default function MainHeader() {
       }}
     >
       <Stack direction={'row'} spacing={2} justifyContent={'space-evenly'}>
-        <Button component={Link} to="/generate-token" variant="contained">
+        <Button component={Link} to="/generate-jwt" variant="contained">
           Generate Token
         </Button>
         <Button component={Link} to="/track-events" variant="contained">

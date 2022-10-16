@@ -1,7 +1,8 @@
 // @mui
 import { styled } from '@mui/material/styles';
-import { Container } from '@mui/material';
-// routes
+import { Stack, Alert, IconButton, InputAdornment, Container, TextField } from '@mui/material';
+import { LoadingButton } from '@mui/lab';
+
 // components
 import Page from '../components/Page';
 
@@ -10,14 +11,11 @@ import { useState } from 'react';
 // form
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-// @mui
-import { Stack, Alert, IconButton, InputAdornment } from '@mui/material';
-import { LoadingButton } from '@mui/lab';
 
 // components
-
 import { FormProvider, RHFTextField } from '../components/hook-form';
-import Iconify from 'src/components/Iconify';
+import Iconify from '../components/Iconify';
+import { api } from 'src/services/api';
 
 // ----------------------------------------------------------------------
 
@@ -36,8 +34,9 @@ const RootStyle = styled('div')(({ theme }) => ({
   },
 }));
 
-export default function GenerateToken() {
+export default function GenerateJWT() {
   const [showPassword, setShowPassword] = useState(false);
+  const [jwt, setJWT] = useState('');
 
   const LoginSchema = Yup.object().shape({
     email: Yup.string().email('Email must be a valid email address').required('Email is required'),
@@ -61,11 +60,25 @@ export default function GenerateToken() {
     formState: { errors, isSubmitting },
   } = methods;
 
+  const onSubmit = async ({ email, password }: FormValuesProps) => {
+    try {
+      const { data } = await api.post('/generate-jwt', {
+        email,
+        password,
+      });
+      setJWT(data.jwt);
+    } catch (error) {
+      reset();
+
+      setError('afterSubmit', { ...error, message: error.message });
+    }
+  };
+
   return (
-    <Page title="Login">
+    <Page title="Generate Token">
       <RootStyle>
         <Container sx={{ py: 5, maxWidth: 480 }}>
-          <FormProvider methods={methods} onSubmit={handleSubmit(() => {})}>
+          <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={2}>
               {!!errors.afterSubmit && <Alert severity="error">{errors.afterSubmit.message}</Alert>}
 
@@ -96,6 +109,8 @@ export default function GenerateToken() {
               >
                 Generate Token
               </LoadingButton>
+
+              <TextField placeholder="JWT" size="small" multiline minRows={2} value={jwt} />
             </Stack>
           </FormProvider>
         </Container>

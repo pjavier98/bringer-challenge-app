@@ -1,5 +1,5 @@
 import { Suspense, lazy, ElementType } from 'react';
-import { useRoutes } from 'react-router-dom';
+import { Navigate, useRoutes } from 'react-router-dom';
 import MainLayout from 'src/layouts';
 
 // components
@@ -20,12 +20,13 @@ export default function Router() {
       path: '/',
       element: <MainLayout />,
       children: [
-        { path: 'generate-token', element: <GenerateTokenPage /> },
+        { path: 'generate-jwt', element: <GenerateJWTPage /> },
         { path: 'track-events', element: <TrackEventsPage /> },
+        { path: '/', element: <Navigate to="/generate-jwt" replace /> },
       ],
     },
   ]);
 }
 
-const GenerateTokenPage = Loadable(lazy(() => import('../pages/GenerateToken')));
+const GenerateJWTPage = Loadable(lazy(() => import('../pages/GenerateJWT')));
 const TrackEventsPage = Loadable(lazy(() => import('../pages/TrackEvents')));

@@ -1,9 +1,7 @@
 import axios from 'axios';
-// config
-// import { HOST_API } from 'src/config';
 
 const api = axios.create({
-  // baseURL: HOST_API,
+  baseURL: process.env.REACT_APP_HOST_API_KEY,
 });
 
 api.interceptors.response.use(
