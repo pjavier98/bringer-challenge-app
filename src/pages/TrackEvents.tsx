@@ -9,7 +9,7 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 // components
 import Page from '../components/Page';
-import { Box, Container, IconButton, Stack, TextField } from '@mui/material';
+import { Box, Button, Card, Container, Stack, TextField, Typography } from '@mui/material';
 import Iconify from 'src/components/Iconify';
 import { useState } from 'react';
 
@@ -24,19 +24,33 @@ export default function TrackEventsPage() {
     <Page title="Track Events">
       <RootStyle>
         <Container sx={{ py: 5, alignItems: 'center', justifyContent: 'center' }}>
-          <Stack direction={'row'} sx={{ alignItems: 'center', justifyContent: 'center' }}>
-            <TextField
-              size="small"
-              placeholder="Tracking Number"
-              value={trackingNumber}
-              onChange={(e) => setTrackingNumber(e.target.value.toLocaleUpperCase())}
-            />
-            <IconButton aria-label="search" color="primary" disabled={!trackingNumber}>
-              <Iconify icon={'eva:search-fill'} />
-            </IconButton>
-          </Stack>
+          <Card sx={{ p: 3 }}>
+            <Typography align="center" variant="h4">
+              Start tracking your packages
+            </Typography>
+            <Stack
+              spacing={2}
+              mt={2}
+              direction={'row'}
+              sx={{ alignItems: 'center', justifyContent: 'center' }}
+            >
+              <TextField
+                size="small"
+                placeholder="Tracking Number"
+                value={trackingNumber}
+                onChange={(e) => setTrackingNumber(e.target.value.toLocaleUpperCase())}
+              />
+              <Button
+                variant="outlined"
+                disabled={!trackingNumber}
+                endIcon={<Iconify icon={'eva:search-fill'} />}
+              >
+                Search
+              </Button>
+            </Stack>
+          </Card>
 
-          <Box sx={{ mt: 5 }}>
+          <Card sx={{ p: 3, mt: 3 }}>
             <Timeline>
               <TimelineItem>
                 <TimelineOppositeContent color="text.secondary">09:30 am</TimelineOppositeContent>
@@ -71,7 +85,7 @@ export default function TrackEventsPage() {
                 <TimelineContent>Repeat</TimelineContent>
               </TimelineItem>
             </Timeline>
-          </Box>
+          </Card>
         </Container>
       </RootStyle>
     </Page>

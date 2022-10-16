@@ -1,6 +1,15 @@
 // @mui
 import { styled } from '@mui/material/styles';
-import { Stack, Alert, IconButton, InputAdornment, Container, TextField } from '@mui/material';
+import {
+  Stack,
+  Alert,
+  IconButton,
+  InputAdornment,
+  Container,
+  TextField,
+  Card,
+  Typography,
+} from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
 // components
@@ -78,41 +87,48 @@ export default function GenerateJWT() {
     <Page title="Generate Token">
       <RootStyle>
         <Container sx={{ py: 5, maxWidth: 480 }}>
-          <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-            <Stack spacing={2}>
-              {!!errors.afterSubmit && <Alert severity="error">{errors.afterSubmit.message}</Alert>}
+          <Card sx={{ p: 3 }}>
+            <Typography align="center" variant="h4">
+              Generate your JWT Token
+            </Typography>
+            <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+              <Stack spacing={2} mt={2}>
+                {!!errors.afterSubmit && (
+                  <Alert severity="error">{errors.afterSubmit.message}</Alert>
+                )}
 
-              <RHFTextField name="email" label="Email address" size="small" />
+                <RHFTextField name="email" label="Email address" size="small" />
 
-              <RHFTextField
-                name="password"
-                label="Password"
-                size="small"
-                type={showPassword ? 'text' : 'password'}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-                        <Iconify icon={showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'} />
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              />
+                <RHFTextField
+                  name="password"
+                  label="Password"
+                  size="small"
+                  type={showPassword ? 'text' : 'password'}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
+                          <Iconify icon={showPassword ? 'eva:eye-fill' : 'eva:eye-off-fill'} />
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                />
 
-              <LoadingButton
-                fullWidth
-                size="small"
-                type="submit"
-                variant="contained"
-                loading={isSubmitting}
-              >
-                Generate Token
-              </LoadingButton>
+                <LoadingButton
+                  fullWidth
+                  size="small"
+                  type="submit"
+                  variant="contained"
+                  loading={isSubmitting}
+                >
+                  Generate Token
+                </LoadingButton>
 
-              <TextField placeholder="JWT" size="small" multiline minRows={2} value={jwt} />
-            </Stack>
-          </FormProvider>
+                <TextField placeholder="JWT" size="small" multiline minRows={2} value={jwt} />
+              </Stack>
+            </FormProvider>
+          </Card>
         </Container>
       </RootStyle>
     </Page>
