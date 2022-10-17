@@ -19,6 +19,7 @@ import { useCallback, useState } from 'react';
 import TrackEventsItemPage from './TrackEventsItem';
 import { Track } from 'src/types/track';
 import { api } from 'src/services/api';
+import CopyClipboard from 'src/components/CopyClipboard';
 
 const RootStyle = styled('div')(() => ({
   height: '100%',
@@ -100,14 +101,15 @@ export default function TrackEventsPage() {
                     alignItems={'center'}
                     justifyContent={'space-around'}
                   >
-                    <TextField
+                    <CopyClipboard
                       value={track?.label?.tracking_number}
                       placeholder={'Tracking Number'}
                       label={'Tracking Number'}
                       size={'small'}
                     />
-                    <TextField
-                      value={track.label.external_tracking_number}
+
+                    <CopyClipboard
+                      value={track?.label?.tracking_number}
                       placeholder={'External Tracking Number'}
                       label={'External Tracking Number'}
                       size={'small'}

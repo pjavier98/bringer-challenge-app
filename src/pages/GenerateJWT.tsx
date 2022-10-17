@@ -25,6 +25,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FormProvider, RHFTextField } from '../components/hook-form';
 import Iconify from '../components/Iconify';
 import { api } from 'src/services/api';
+import CopyClipboard from 'src/components/CopyClipboard';
 
 // ----------------------------------------------------------------------
 
@@ -71,6 +72,7 @@ export default function GenerateJWT() {
 
   const onSubmit = async ({ email, password }: FormValuesProps) => {
     try {
+      setJWT('');
       const { data } = await api.post('/generate-jwt', {
         email,
         password,
@@ -125,7 +127,9 @@ export default function GenerateJWT() {
                   Generate Token
                 </LoadingButton>
 
-                <TextField placeholder="JWT" size="small" multiline minRows={2} value={jwt} />
+                {jwt && (
+                  <CopyClipboard value={jwt} placeholder="JWT" size="small" multiline minRows={2} />
+                )}
               </Stack>
             </FormProvider>
           </Card>
