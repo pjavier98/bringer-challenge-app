@@ -1,15 +1,19 @@
+import { Box, CircularProgress } from '@mui/material';
 import { Suspense, lazy, ElementType } from 'react';
 import { Navigate, useRoutes } from 'react-router-dom';
 import MainLayout from 'src/layouts';
-
-// components
-import LoadingScreen from '../components/LoadingScreen';
 
 // ----------------------------------------------------------------------
 
 const Loadable = (Component: ElementType) => (props: any) =>
   (
-    <Suspense fallback={<LoadingScreen />}>
+    <Suspense
+      fallback={
+        <Box sx={{ display: 'flex' }}>
+          <CircularProgress />
+        </Box>
+      }
+    >
       <Component {...props} />
     </Suspense>
   );

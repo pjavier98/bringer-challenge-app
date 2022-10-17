@@ -1,12 +1,14 @@
 // @mui
-import { AppBar, Stack, Button } from '@mui/material';
+import { AppBar, Stack, Button, useTheme } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export default function MainHeader() {
+  const theme = useTheme();
+
   return (
     <AppBar
       sx={{
-        bgcolor: 'transparent',
+        bgcolor: theme.palette.grey[0],
         height: 50,
         justifyContent: 'center',
       }}

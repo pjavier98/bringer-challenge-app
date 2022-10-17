@@ -12,7 +12,7 @@ export type Label = {
 export type ParcelTrackingItem = {
   city: null | string;
   state: null | string;
-  timestamp: Date;
+  timestamp: string;
   country: Country;
   tracking_code_vendor?: TrackingCodeVendor;
   tracking_code?: TrackingCode;
