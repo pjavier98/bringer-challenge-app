@@ -41,7 +41,8 @@ This app features all the latest tools and practices in web development!
 1. Clone this repo using `https://github.com/pjavier98/bringer-challenge-app.git`
 2. Move to the appropriate directory: `cd bringer-challenge-app`.<br />
 3. Run `yarn` to install dependencies.<br />
-4. Run `yarn start` to see the example app at `http://localhost:3000`.
+4. Create the env vars
+5. Run `yarn start` to see the example app at `http://localhost:3000`.
 
 ## Contributing
 
