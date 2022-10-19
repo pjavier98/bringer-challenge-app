@@ -109,7 +109,7 @@ export default function TrackEventsPage() {
                     />
 
                     <CopyClipboard
-                      value={track?.label?.tracking_number}
+                      value={track?.label?.external_tracking_number}
                       placeholder={'External Tracking Number'}
                       label={'External Tracking Number'}
                       size={'small'}
